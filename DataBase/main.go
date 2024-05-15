@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	urlConexao := "golang:golang@/devbook?chartset=utf8&parseTime=True&loc=Local"
+	urlConexao := "golang:golang@/devbook?"
 	db, err := sql.Open("mysql", urlConexao)
 	if err != nil {
 		log.Fatal(err)
@@ -23,9 +23,11 @@ func main() {
 
 	fmt.Println("Conexão Aberta!")
 
-	lines, err := db.Query("select * from usuarios")
+	lines, err := db.Query("select * from Users")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer lines.Close()
+
+	fmt.Println(lines)
 }
